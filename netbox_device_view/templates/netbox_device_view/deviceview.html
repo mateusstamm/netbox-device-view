@@ -45,7 +45,8 @@
 				{% else %}
 				bg-danger
 				{% endif %}"
-				title="{{ int.name }}
+				title="{{ int.name }}<hr>
+				{% if int.cable.description %}{{ int.cable.description }}{% endif %}
 				{% if int.connected_endpoints|length > 0 %}<hr>
 					{% for ce in int.connected_endpoints %}
 					{{ ce.device }} | {{ ce.name }}
