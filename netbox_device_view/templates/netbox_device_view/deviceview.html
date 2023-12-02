@@ -45,17 +45,26 @@
 				{% else %}
 				bg-danger
 				{% endif %}"
-				title="{{ int.name }}<hr>
-				{% if int.cable.description %}{{ int.cable.description }}{% endif %}
+				title="{{ int.name }}
+				{% if int.cable.description %}<hr>
+					<b>Cable ({{ int.cable.label }})</b><br>
+					{{ int.cable.description }}
+				{% endif %}
 				{% if int.connected_endpoints|length > 0 %}<hr>
 					{% for ce in int.connected_endpoints %}
-					{{ ce.device }} | {{ ce.name }}
+					<b>Device</b><br>
+					{{ ce.device }}<br>
+					<b>Endpoint</b><br>
+					{{ ce.name }}
 					{% endfor %}
 				{% elif int.link_peers|length > 0 %}<hr>
 					{% for lp in int.link_peers %}
 					{% if lp.device %}
-					{{ lp.device }} | {{ lp.name }}
+					<b>Link Peer</b><br>
+					{{ lp.device }}<br>
+					{{ lp.name }}
 					{% elif lp.circuit %}
+					<b>Circuit</b><br>
 					{{ lp }}
 					{% endif %}
 					{% endfor %}
